@@ -1,0 +1,85 @@
+To run your **Flask-based disaster classification and segmentation app** using models and outputs from a **Kaggle notebook**, follow these step-by-step instructions:
+
+---
+
+### ✅ 1. **Download Your Models and Files from Kaggle**
+
+From your trained notebook on Kaggle:
+
+* Export/download the following:
+
+  * `disaster_classifier.onnx`
+  * `floodnet_unet.onnx`
+  * `fire_unet.onnx` *(if implemented)*
+  * `landslide_unet.onnx`
+  * Any test image(s) you want to use
+
+Click **"File" > "Download"** or use:
+
+```python
+# In Kaggle notebook
+from IPython.display import FileLink
+FileLink('disaster_classifier.onnx')
+```
+
+---
+
+### ✅ 2. **Create Project Folder Locally**
+
+On your local machine (e.g. in VS Code):
+
+```
+disaster_app/
+│
+├── app.py
+├── templates/
+│   ├── home.html
+│   └── segment.html
+├── static/
+│   ├── uploads/
+│   └── results/
+├── disaster_classifier.onnx
+├── floodnet_unet.onnx
+├── fire_unet.onnx
+├── landslide_unet.onnx
+```
+
+> ✅ Make sure the `uploads` and `results` folders are empty but present.
+
+---
+
+### ✅ 3. **Install Python Requirements**
+
+In your terminal (VS Code or CMD):
+
+```bash
+pip install flask onnxruntime numpy pillow matplotlib scikit-image
+```
+
+---
+
+### ✅ 4. **Run the Flask App**
+
+In the root of your `disaster_app/` folder:
+
+```bash
+python app.py
+```
+
+You should see:
+
+```
+ * Running on http://127.0.0.1:5000/
+```
+
+---
+
+
+### ⚠️ Notes
+
+* Ensure the ONNX models match the input shape `(1, 256, 256, 3)` or adjust `app.py` accordingly.
+* You can test with sample images exported from Kaggle to validate.
+
+---
+
+Let me know if you want a ready-made [requirements.txt](f), [starter project folder ZIP](f), or [model upload guide](f).
